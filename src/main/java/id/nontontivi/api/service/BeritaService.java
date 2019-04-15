@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BeritaService {
@@ -26,5 +27,14 @@ public class BeritaService {
     {
         Page<Berita> berita = beritaRepository.findAllByOrderByIdDesc(PageRequest.of(0, jum));
         return berita.getContent();
+    }
+
+    public Berita getBeritaDetail(long id)
+    {
+        Optional<Berita> berita = beritaRepository.findById(id);
+        if(berita.isPresent())
+            return berita.get();
+        else
+            return null;
     }
 }

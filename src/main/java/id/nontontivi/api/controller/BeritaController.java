@@ -24,15 +24,21 @@ public class BeritaController {
         return "Hello World!";
     }
 
-    @RequestMapping("/berita")
+    @RequestMapping("/allberita")
     public List<Berita> getAllBerita()
     {
         return beritaService.getAllBerita();
     }
 
-    @RequestMapping("/terbaru/{jum}")
+    @RequestMapping("/headline/{jum}")
     public List<Berita> getNewBerita(@PathVariable int jum)
     {
         return beritaService.getBeritaByJum(jum);
+    }
+
+    @RequestMapping("berita/{id}")
+    public Berita getBeritaDetail(@PathVariable long id)
+    {
+        return beritaService.getBeritaDetail(id);
     }
 }
